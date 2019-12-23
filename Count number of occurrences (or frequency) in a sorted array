@@ -1,0 +1,73 @@
+https://www.ritambhara.in/count-frequency-of-a-number-in-a-sorted-array/
+COUNT FREQUENCY OF A NUMBER IN A SORTED ARRAY
+May 26, 2017Posted by: Kamal Rawat Category: Algorithms No Comments
+Given a sorted array of numbers and a number x, count the number of occurrences of x in the array.
+Input:
+
+int arr[] = {1, 3, 3, 4, 4 ,5, 5, 5, 7, 8, 8};	int x = 5;
+Output:
+3
+
+Linear Search Solution
+
+5 appears three times in the array. The linear search way is to traverse the array fro left till we find the first x. Increment the counter for each successive number till we find the last x.
+
+int occurrenceCnt(int *arr[], int n, int x)
+{
+  int cnt = 0;
+  for(int i = 0; i<n; i++)
+    if(arr[i] == x)
+      cnt++;
+  return cnt;
+}
+In worst case, the for loop takes O(n) time. A small optimization can be to exit the loop when arr[i]>x, but this will not decrease the asymptotic time complexity.
+
+Binary Search Solution
+
+A better way is to use binary search algorithm to find the first and last occurrences of x in the sorted array. Because array is sorted, all the x’s are between these two indices only.
+
+If arr[i] is the first occurrence of x in the array then either i=0 or arr[i-1] != x. The function to find the first occurrence of a number in an array is:
+
+int firstOcc(int *arr, int l, int h, int x)
+{
+  if(h >= l)
+  {
+    int mid = (l + h)/2;
+    if( ( mid == 0 || x > arr[mid-1]) && arr[mid] == x)
+      return mid;
+    else if(x > arr[mid])
+      return firstOcc(arr, (mid + 1), h, x);
+    else
+      return firstOcc(arr, l, (mid -1), x);
+  }
+  return -1;
+}
+Similarly arr[i] is the last occurrence of x in the array if either i=n-1 or arr[i+1] != x. We should pass total number of elements in the array to check if we are at the last element.
+
+int lastOcc(int arr[], int n, int l, int h, int x)
+{
+  if(h >= l)
+  {
+    int mid = (l + h)/2;
+    if( ( mid == n-1 || x < arr[mid+1]) && arr[mid] == x )
+      return mid;
+    else if(x < arr[mid])
+      return lastOcc(arr, n, l, (mid -1), x);
+    else
+      return lastOcc(arr, n, (mid + 1), h, x);
+  }
+  return -1;
+}
+With the above two functions in place, the function to count occurrences is simply:
+
+int occurrenceCnt(int *arr, int x, int n)
+{
+  int idxFirst = firstOcc(arr, 0, n-1, x);
+  // NUMBER DOES NOT EXIST
+  if(idxFirst == -1){ return -1; }
+ 
+  int idxLast = lastOcc(arr, n, idxFirst, n-1, x);
+  return idxLast - idxFirst + 1;
+}
+Time taken by firstOcc and lastOcc is O(lg(n)). Time complexity of occurrenceCnt is same as that of Binary search, i.e O(lg(n)).
+
