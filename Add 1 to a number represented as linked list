@@ -1,1 +1,56 @@
 https://www.tutorialspoint.com/add-1-to-a-number-represented-as-linked-list
+The list::push_front() is a built-in function in C++ STL which is used to insert an element at the front of a list container just before the current top element. This function also increases the size of the container by 1.
+ reverse iterator to the reverse beginning of the sequence container.
+
+If the vector object is const-qualified, the function returns a const_reverse_iterator. Otherwise, it returns a reverse_iterator.
+
+Member types reverse_iterator and const_reverse_iterator are reverse random access iterator types (pointing to an element and to a const element, respectively). See vector member types.
+
+Example
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+// vector::rbegin/rend
+#include <iostream>
+#include <vector>
+
+int main ()
+{
+  std::vector<int> myvector (5);  // 5 default-constructed ints
+
+  int i=0;
+
+  std::vector<int>::reverse_iterator rit = myvector.rbegin();
+  for (; rit!= myvector.rend(); ++rit)
+    *rit = ++i;
+
+  std::cout << "myvector contains:";
+  for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); ++it)
+    std::cout << ' ' << *it;
+  std::cout << '\n';
+
+  return 0;
+}
+ Edit & Run
+
+
+Output:
+myvector contains: 5 4 3 2 1
