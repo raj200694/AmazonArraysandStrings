@@ -1,3 +1,5 @@
+
+The unordered_set::count() function is a built-in function in C++ STL which is used to count occurrences of a particular element in an unordered_set container. ... This parameter represents the element which is needed to be checked if it is present in the container or not.
 Given two arrays a[] and b[], the task is to find the count of all pairs (a[i], b[j]) such that a[i] + b[j] is unique among all the pairs i.e. if two pairs have equal sum then only one will be counted in the result.
 
 Examples:
