@@ -1,0 +1,75 @@
+An Efficient solution of this problem is take initial and last value of index in l and r variable.
+
+1) Initialize two variables l and r to find the candidate 
+   elements in the sorted array.
+       (a) l = 0
+       (b) r = n - 1
+2) Initialize : result = 0
+2) Loop while l < r.
+
+    // If current left and current
+    // right have sum smaller than x,
+    // the all elements from l+1 to r
+    // form a pair with current
+    (a) If (arr[l] + arr[r] < x)  
+          result = result + (r - l)      
+   
+    (b) Else
+            r--;
+       
+3) Return result
+Below is the implementation of above steps.
+filter_none
+edit
+play_arrow
+
+brightness_4
+// C++ program to count pairs in an array 
+// whose sum is less than given number x 
+#include<bits/stdc++.h> 
+using namespace std; 
+  
+// Function to count pairs in array 
+// with sum less than x. 
+int findPairs(int arr[],int n,int x) 
+{ 
+    int l = 0, r = n-1; 
+    int result = 0; 
+  
+    while (l < r) 
+    { 
+        // If current left and current 
+        // right have sum smaller than x, 
+        // the all elements from l+1 to r 
+        // form a pair with current l. 
+        if (arr[l] + arr[r] < x) 
+        { 
+            result += (r - l); 
+            l++; 
+        } 
+  
+        // Move to smaller value 
+        else
+            r--; 
+    } 
+  
+    return result; 
+} 
+  
+// Driven code 
+int main() 
+{ 
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8}; 
+    int n = sizeof(arr)/sizeof(int); 
+    int x = 7; 
+    cout << findPairs(arr, n, x); 
+    return 0; 
+} 
+
+Output:
+6
+Time complexity : O(n)
+Space complexity : O(1)
+
+Extension:
+If array is unsorted, then we can sort the array first and then apply above method to solve in O(n Log n) time.
