@@ -1,0 +1,41 @@
+Method 3 (Best approach) : Now if we carefully observe then we can realize that the answer just depends on frequencies of characters in the original string. For example in string abcab, frequency of ‘a’ is 2 and substrings contributing to answer are a, abca and a respectively, a total of 3, which is calculated by (frequency of ‘a’+1)C2.
+filter_none
+edit
+play_arrow
+
+brightness_4
+// Most efficient C++ program to count all   
+// substrings with same first and last characters. 
+#include <bits/stdc++.h> 
+using namespace std; 
+const int MAX_CHAR = 26;  // assuming lower case only 
+  
+int countSubstringWithEqualEnds(string s) 
+{ 
+    int result = 0; 
+    int n = s.length(); 
+  
+    // Calculating frequency of each character 
+    // in the string. 
+    int count[MAX_CHAR] = {0}; 
+    for (int i=0; i<n; i++) 
+        count[s[i]-'a']++; 
+  
+    // Computing result using counts 
+    for (int i=0; i<MAX_CHAR; i++) 
+        result += (count[i]*(count[i]+1)/2); 
+  
+    return result; 
+} 
+  
+// Driver function 
+int main() 
+{ 
+    string s("abcab"); 
+    cout << countSubstringWithEqualEnds(s); 
+    return 0; 
+} 
+
+Output:
+7
+The above code has time complexity of O(n) and requires O(1) extra space.
