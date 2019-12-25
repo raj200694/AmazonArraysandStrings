@@ -1,0 +1,80 @@
+An Efficient Solution is to use hashing.
+1) Traverse array and insert elements and their counts in hash table.
+2) Traverse array again and print first element with count equals to 1.
+
+filter_none
+edit
+play_arrow
+
+brightness_4
+// Efficient CPP program to find first non- 
+// repeating element. 
+#include <bits/stdc++.h> 
+using namespace std; 
+  
+int firstNonRepeating(int arr[], int n) 
+{ 
+    // Insert all array elements in hash 
+    // table 
+    unordered_map<int, int> mp; 
+    for (int i = 0; i < n; i++) 
+        mp[arr[i]]++; 
+  
+    // Traverse array again and return 
+    // first element with count 1. 
+    for (int i = 0; i < n; i++) 
+        if (mp[arr[i]] == 1) 
+            return arr[i]; 
+    return -1; 
+} 
+  
+// Driver code 
+int main() 
+{ 
+    int arr[] = { 9, 4, 9, 6, 7, 4 }; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+    cout << firstNonRepeating(arr, n); 
+    return 0; 
+} 
+Output:
+6
+Time Complexity: O(n)
+Auxiliary Space: O(n)
+
+Further Optimization: If array has many duplicates, we can also store index in hash table, using a hash table where value is a pair. Now we only need to traverse keys in hash table (not complete array) to find first non repeating.
+
+Printing all non-repeating elements:
+filter_none
+edit
+play_arrow
+
+brightness_4
+// Efficient CPP program to print all non- 
+// repeating elements. 
+#include <bits/stdc++.h> 
+using namespace std; 
+  
+void firstNonRepeating(int arr[], int n) 
+{ 
+    // Insert all array elements in hash 
+    // table 
+    unordered_map<int, int> mp; 
+    for (int i = 0; i < n; i++) 
+        mp[arr[i]]++; 
+  
+    // Traverse through map only and 
+    for (auto x : mp) 
+        if (x.second == 1) 
+            cout << x.first << " "; 
+} 
+  
+// Driver code 
+int main() 
+{ 
+    int arr[] = { 9, 4, 9, 6, 7, 4 }; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+    firstNonRepeating(arr, n); 
+    return 0; 
+} 
+Output:
+7 6
