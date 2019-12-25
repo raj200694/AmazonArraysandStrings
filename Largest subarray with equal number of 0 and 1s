@@ -1,0 +1,5 @@
+https://leetcode.com/articles/contiguous-array/(hashmap soln)
+no need of contains method,the find method searches for the key
+
+https://en.cppreference.com/w/cpp/container/map/contains
+© 2019 GitHub, Inc.
