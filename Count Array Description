@@ -1,0 +1,13 @@
+Regarding the count array
+
+if you want all the english alphabets and letters
+declare the count array with 256 chars
+and do count[str[i]]++
+
+if you want only small english alpahabets a to z
+declare count array with size 26
+and count[str[i]-'a']++;
+
+if you want a to z and A to Z
+then declare count array size 52
+count[str[i]-'A']++;
