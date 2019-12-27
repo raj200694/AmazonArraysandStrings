@@ -1,0 +1,9 @@
+Kth smallest means arrange the elements in ascending order and the kth element is kth smallest
+Kth largset means arrange the elements in descending order and the kth element is kth largest
+
+
+for kth smallest if we use maxheap
+do build heapify of k elements and from n-k to k if(arr[i]<element at top of heap) then rep;ace and heapifty
+
+for kth largest if we use minhesp
+do build heapify of k elements and from n-k to k if(arr[i]>element at top of heap) then rep;ace and heapifty
