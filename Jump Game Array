@@ -1,0 +1,13 @@
+https://www.interviewbit.com/problems/jump-game-array/
+int Solution::canJump(vector<int> &A) {    
+    int n=A.size();
+    int reach=0;
+    for(int i=0; i<n; i++){
+        if(i<=reach){
+            reach = max(reach, i+A[i]);
+        }
+        else
+            break;
+    }
+    return (reach>=n-1);
+}
